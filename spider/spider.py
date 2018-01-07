@@ -33,9 +33,18 @@ class Spider():
             anchors.append(anchor)
         return anchors
 
+    def __refine(self, anchors):
+        l = lambda anchor: {
+            'name': anchor['name'][0].strip(),
+            'number': anchor['number'][0]
+        }
+        return map(l, anchors)
+
     def go(self):
         html = self.__fetch_content()
         anchors = self.__analysis(html)
+        anchors = list(self.__refine(anchors))
+        print(anchors)
 
 
 spider = Spider()
