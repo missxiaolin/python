@@ -33,6 +33,7 @@ class Spider():
             anchors.append(anchor)
         return anchors
 
+    # 格式化
     def __refine(self, anchors):
         l = lambda anchor: {
             'name': anchor['name'][0].strip(),
@@ -40,11 +41,25 @@ class Spider():
         }
         return map(l, anchors)
 
+    # 排序
+    def __sort(self, anchors):
+        anchors = sorted(anchors, key=self.__sort_seed)
+        return anchors
+
+    def __sort_seed(self, anchor):
+        return anchor['number']
+
+    # 展示
+    def __show(self, anchors):
+        for anchor in anchors:
+            print(anchor['name'] + '---' + anchor['number'])
+
     def go(self):
         html = self.__fetch_content()
         anchors = self.__analysis(html)
         anchors = list(self.__refine(anchors))
-        print(anchors)
+        anchors = self.__sort(anchors)
+        self.__show(anchors)
 
 
 spider = Spider()
