@@ -1,4 +1,4 @@
-# 爬虫框架：BeautifulSoup
+# 爬虫框架：BeautifulSoup, Scrapy
 
 # 正则模块
 import re
