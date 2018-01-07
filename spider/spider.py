@@ -43,11 +43,15 @@ class Spider():
 
     # 排序
     def __sort(self, anchors):
-        anchors = sorted(anchors, key=self.__sort_seed)
+        anchors = sorted(anchors, key=self.__sort_seed, reverse=True)
         return anchors
 
     def __sort_seed(self, anchor):
-        return anchor['number']
+        r = re.findall('\d*', anchor['number'])
+        number = float(r[0])
+        if '万' in anchor['number']:
+            number *= 10000
+        return number
 
     # 展示
     def __show(self, anchors):
