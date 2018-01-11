@@ -19,3 +19,6 @@ def getform(request):
         user_message.save()
 
     return render(request, 'message_form.html')
+
+
+
