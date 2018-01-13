@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
+# 发送邮箱
+from django.core.mail import send_mail
 
 # Create your views here.
 
