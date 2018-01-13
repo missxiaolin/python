@@ -26,6 +26,8 @@ class CourseOrg(models.Model):
     image = models.ImageField(upload_to='org/%Y/%m', verbose_name=u'封面图', max_length=100)
     address = models.CharField(max_length=150, verbose_name=u'机构地址')
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name=u'所在城市')
+    has_auth = models.BooleanField(verbose_name=u'是否认证', default=False)
+    index = models.IntegerField(verbose_name=u'排序', default=999)
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u'添加时间')
 
     class Meta:
