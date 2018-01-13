@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-	<title>慕学在线网登录</title>
+	<title>登录</title>
     {% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="/static/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="/static/css/login.css">
@@ -68,7 +68,7 @@
             </div>
             <div class="fl form-box">
                 <h2>帐号登录</h2>
-                <form action="login.html" method="post" autocomplete="off">
+                <form action="/login/" method="post" autocomplete="off">
                     <input type='hidden' name='csrfmiddlewaretoken' value='mymQDzHWl2REXIfPMg2mJaLqDfaS1sD5' />
                     <div class="form-group marb20 ">
                         <label>用&nbsp;户&nbsp;名</label>
@@ -83,8 +83,8 @@
 
                         <a class="fr" href="forgetpwd.html">忘记密码？</a>
                      </div>
+                    {% csrf_token %}
                      <input class="btn btn-green" id="jsLoginBtn" type="submit" value="立即登录 > " />
-                <input type='hidden' name='csrfmiddlewaretoken' value='5I2SlleZJOMUX9QbwYLUIAOshdrdpRcy' />
                 </form>
                 <p class="form-p"><a href="register.html">[立即注册]</a></p>
             </div>

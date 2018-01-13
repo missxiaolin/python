@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from apps.message.views import getform
+from apps.message.views import getform, user_login
 from extra_apps.xadmin import xadmin
 
 urlpatterns = [
@@ -28,6 +28,6 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^form/$', getform),
     url('^$', TemplateView.as_view(template_name="index.html"), name="index"),
-    url('^login/$', TemplateView.as_view(template_name="login.html"), name="login")
+    url('^login/$', user_login, name="login")
 ]
-static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

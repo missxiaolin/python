@@ -27,6 +27,9 @@ SECRET_KEY = 'qd^1e&ynr3*6l2qx5qi7ow@u8e**v-p05x0v0ha*c$926@1mz#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# AUTHENTICATION_BACKENDS = (
+#     'apps.message.views.CustomBackend',
+# )
 
 # Application definition
 
