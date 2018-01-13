@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.backends import ModelBackend
+from django.db.models import Q
+from django.views.generic.base import View
 
 # Create your views here.
 
 from .models import UserMessage, UserProfile
+from .forms import LoginForm
 
 
 # 验证user
@@ -16,6 +19,24 @@ from .models import UserMessage, UserProfile
 #                 return user
 #         except Ellipsis as e:
 #             return None
+
+# 登录
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'login.html', {})
+
+    def post(self, request):
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user_name = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            user = authenticate(username=user_name, password=password)
+            print(user)
+            if user is not None:
+                login(request, user)
+                return render(request, 'index.html')
+        else:
+            return render(request, 'login.html', {'msg':'用户名密码错误'})
 
 
 # 留言板
@@ -33,19 +54,3 @@ def getform(request):
         user_message.save()
 
     return render(request, 'message_form.html')
-
-
-# 登录
-def user_login(request):
-    if request.method == "POST":
-        user_name = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = authenticate(username=user_name, password=password)
-        print(user)
-        if user is not None:
-            login(request, user)
-            return render(request, 'index.html')
-        else:
-            return render(request, 'login.html', {})
-    elif request.method == "GET":
-        return render(request, 'login.html', {})
