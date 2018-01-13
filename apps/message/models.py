@@ -43,12 +43,19 @@ class UserProfile(models.Model):
 class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u'验证码')
     email = models.EmailField(max_length=50, verbose_name=u'邮箱')
-    send_type = models.CharField(choices=(('register', u'注册'), ('forget', u'找回密码')), max_length=10)
-    send_time = models.DateTimeField(default=datetime.now)
+    send_type = models.CharField(choices=(('register', u'注册'), ('forget', u'找回密码')), max_length=10,
+                                 verbose_name=u'发送类型')
+    send_time = models.DateTimeField(default=datetime.now, verbose_name=u'添加时间')
 
     class Meta:
         verbose_name = u'邮箱验证码'
         verbose_name_plural = verbose_name
+
+    def __unicode__(self):
+        return '{0}({1})'.format(self.code, self.email)
+
+    def __str__(self):
+        return '{0}({1})'.format(self.code, self.email)
 
 
 class Banner(models.Model):
@@ -87,6 +94,7 @@ class CourseComments(models.Model):
         verbose_name = u'课程评论'
         verbose_name_plural = verbose_name
 
+
 # 用户收藏
 class UserFavorite(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, verbose_name=u'用户')
@@ -97,6 +105,7 @@ class UserFavorite(models.Model):
     class Meta:
         verbose_name = u'用户收藏'
         verbose_name_plural = verbose_name
+
 
 # 用户课程
 class UserCourse(models.Model):
