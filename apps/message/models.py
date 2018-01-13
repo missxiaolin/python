@@ -29,7 +29,7 @@ class UserProfile(models.Model):
     last_login = models.CharField(max_length=12, verbose_name=u'最后登录', default='')
     nick_name = models.CharField(max_length=50, verbose_name=u'昵称', default='')
     birday = models.DateField(verbose_name=u'生日', default='')
-    gender = models.CharField(max_length=5, choices=(('male', u'男'), ('female', u'女')), default='female')
+    gender = models.CharField(max_length=6, choices=(('male', u'男'), ('female', u'女')), default='female')
     address = models.CharField(max_length=100, verbose_name=u'地址', default='')
     mobile = models.CharField(max_length=11, null=True, blank=True)
     image = models.ImageField(upload_to='image/%Y/%m', default=u'image/default.png', max_length=100)
