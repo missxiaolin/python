@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'apps.message',
     'apps.courses',
     'apps.organization',
+    'xadmin',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
