@@ -24,7 +24,7 @@ class Course(models.Model):
 
 # 章节
 class Lesson(models.Model):
-    course = models.ForeignKey('Course', on_delete=models.CASCADE, verbose_name=u'课程',default=0)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name=u'课程',default=0)
     name = models.CharField(max_length=100, verbose_name=u'章节名')
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u'添加时间')
 
