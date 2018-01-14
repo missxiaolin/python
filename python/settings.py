@@ -24,9 +24,10 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'qd^1e&ynr3*6l2qx5qi7ow@u8e**v-p05x0v0ha*c$926@1mz#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# 真的时候404不会出现
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # AUTHENTICATION_BACKENDS = (
 #     'apps.message.views.CustomBackend',
 # )

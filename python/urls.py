@@ -35,3 +35,9 @@ urlpatterns = [
     url(r'^org/', include('apps.organization.urls',namespace='org'))
 ]
 static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# 全局404页面配置
+handler404 = 'apps.message.views.page_not_found'
+
+# 全局500页面配置
+handler500 = 'apps.message.views.page_error'
